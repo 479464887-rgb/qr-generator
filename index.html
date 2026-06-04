@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>QR Code Generator - 免费在线工具</title>
+<meta name="description" content="免费在线二维码生成器 - 输入文字/链接即时生成二维码，可下载PNG">
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;color:#c9d1d9;min-height:100vh;display:flex;flex-direction:column}
+header{background:#161b22;border-bottom:1px solid #30363d;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:18px;font-weight:700;color:#58a6ff}
+.logo span{color:#f0c040}
+header .badge{font-size:10px;background:#daa520;color:#fff;padding:2px 8px;border-radius:10px;margin-left:8px}
+main{max-width:700px;margin:0 auto;padding:32px 24px;flex:1}
+.tool-wrapper{padding:20px 0}
+footer{padding:16px 24px;border-top:1px solid #21262d;text-align:center;font-size:12px;color:#484f58}
+footer a{color:#58a6ff;text-decoration:none;margin:0 8px}
+.btn-primary:hover{background:#2ea043!important}
+.btn:hover{background:#30363d!important}
+input:focus,textarea:focus,select:focus{outline:none;border-color:#58a6ff!important}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🛠 <span>Dev</span>Kit<span class="badge">BETA</span></div>
+  <div style="font-size:11px;color:#8b949e">🔒 本地处理 · 数据不上传</div>
+</header>
+<main>
+  <h1 style="font-size:24px;margin-bottom:4px">QR Code Generator</h1>
+  <p style="color:#8b949e;font-size:14px;margin-bottom:8px">免费在线二维码生成器 - 输入文字/链接即时生成二维码，可下载PNG</p>
+<div class="tool-wrapper">
+  <div class="input-group">
+    <textarea id="qr-input" placeholder="输入文字或链接..." rows="3" style="width:100%;padding:16px;font-size:14px;border:1px solid #30363d;border-radius:8px;background:#0d1117;color:#c9d1d9;resize:vertical;outline:none;font-family:inherit"></textarea>
+  </div>
+  <div class="actions" style="display:flex;gap:8px;margin:16px 0">
+    <select id="qr-size" style="padding:8px 12px;border:1px solid #30363d;border-radius:6px;background:#21262d;color:#c9d1d9;font-size:13px">
+      <option value="256">256px</option>
+      <option value="512" selected>512px</option>
+      <option value="1024">1024px</option>
+    </select>
+    <input type="color" id="qr-fg" value="#000000" style="width:40px;height:38px;border:1px solid #30363d;border-radius:6px;cursor:pointer;background:transparent;padding:2px" title="前景色">
+    <input type="color" id="qr-bg" value="#ffffff" style="width:40px;height:38px;border:1px solid #30363d;border-radius:6px;cursor:pointer;background:transparent;padding:2px" title="背景色">
+    <button class="btn btn-primary" style="flex:1;padding:8px 16px;background:#238636;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600" onclick="generateQR()">生成二维码</button>
+    <button class="btn" style="padding:8px 16px;background:#21262d;color:#c9d1d9;border:1px solid #30363d;border-radius:6px;cursor:pointer;font-size:13px" onclick="downloadQR()">下载 PNG</button>
+  </div>
+  <div id="qr-result" style="text-align:center;padding:32px;min-height:200px;display:flex;align-items:center;justify-content:center">
+    <div style="color:#484f58">输入文字后点击「生成二维码」</div>
+  </div>
+</div>
+</main>
+<footer>
+  <a href="https://github.com/479464887-rgb/qr-generator">GitHub</a>
+  <span>·</span>
+  <a href="mailto:tulv202900@163.com">Contact</a>
+  <span>·</span>
+  <span>© 2026 DevKit</span>
+</footer>
+<script>
+const QRAPI = 'https://api.qrserver.com/v1/create-qr-code/';
+function generateQR() {
+  const text = document.getElementById('qr-input').value.trim();
+  if (!text) return alert('请输入文字或链接');
+  const size = document.getElementById('qr-size').value;
+  const fg = document.getElementById('qr-fg').value.substring(1);
+  const bg = document.getElementById('qr-bg').value.substring(1);
+  const url = QRAPI + `?size=${size}x${size}&data=${encodeURIComponent(text)}&color=${fg}&bgcolor=${bg}`;
+  document.getElementById('qr-result').innerHTML = `<img src="${url}" alt="QR Code" style="max-width:100%" id="qr-img"><div style="margin-top:8px;font-size:11px;color:#8b949e">${size}×${size}</div>`;
+}
+function downloadQR() {
+  const img = document.getElementById('qr-img');
+  if (!img) return alert('请先生成二维码');
+  const a = document.createElement('a');
+  a.href = img.src;
+  a.download = 'qr-code.png';
+  a.click();
+}
+document.getElementById('qr-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); generateQR(); }});
+</script>
+</body>
+</html>
