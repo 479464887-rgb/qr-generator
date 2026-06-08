@@ -10,7 +10,14 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠</text></svg>">
 
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠</text></svg>">
+<meta name="theme-color" content="#0d1117">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta property="og:title" content="QR Code Generator - 免费Online Tools — DevKit Tools">
+<meta property="og:description" content="免费在线二维码Generate器 - Input文字/链接即时Generate二维码，可DownloadPNG">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://479464887-rgb.github.io/qr-generator/">
+<meta name="twitter:card" content="summary_large_image">
 <title>QR Code Generator - 免费Online Tools</title>
 <meta name="description" content="免费在线二维码Generate器 - Input文字/链接即时Generate二维码，可DownloadPNG">
 <style>*{margin:0;padding:0;box-sizing:border-box}
@@ -73,6 +80,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:#58a6ff!import
   <span>© 2026 DevKit</span>
 </footer>
 <script>
+'use strict';
 const QRAPI = 'https://api.qrserver.com/v1/create-qr-code/';
 function generateQR() {
   const text = document.getElementById('qr-input').value.trim();
