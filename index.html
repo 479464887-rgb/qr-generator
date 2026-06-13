@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta property="og:title" content="Qr Generator — DevKit">
-<meta property="og:description" content="Free online Qr Generator tool — fast, simple, and no signup required.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://479464887-rgb.github.io/qr-generator/">
-<meta name="twitter:card" content="summary">
-<link rel="canonical" href="https://479464887-rgb.github.io/qr-generator/">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠</text></svg>">
-
 <meta charset="UTF-8">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠</text></svg>">
 <meta name="theme-color" content="#0d1117">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta property="og:title" content="QR Code Generator - 免费Online Tools — DevKit Tools">
-<meta property="og:description" content="免费在线二维码Generate器 - Input文字/链接即时Generate二维码，可DownloadPNG">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠</text></svg>">
+<title>QR Code Generator — DevKit</title>
+<meta name="description" content="Free online QR Code Generator — Generate QR codes from text/URLs instantly, download as PNG">
+<meta property="og:title" content="QR Code Generator — DevKit">
+<meta property="og:description" content="Free online QR Code Generator — Generate QR codes from text/URLs instantly, download as PNG">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://479464887-rgb.github.io/qr-generator/">
 <meta name="twitter:card" content="summary_large_image">
-<title>QR Code Generator - 免费Online Tools</title>
-<meta name="description" content="免费在线二维码Generate器 - Input文字/链接即时Generate二维码，可DownloadPNG">
+<link rel="canonical" href="https://479464887-rgb.github.io/qr-generator/">
 <style>*{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;color:#c9d1d9;min-height:100vh;display:flex;flex-direction:column}
 header{background:#161b22;border-bottom:1px solid #30363d;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
@@ -33,7 +26,6 @@ footer a{color:#58a6ff;text-decoration:none;margin:0 8px}
 .btn-primary:hover{background:#2ea043!important}
 .btn:hover{background:#30363d!important}
 input:focus,textarea:focus,select:focus{outline:none;border-color:#58a6ff!important}
-/* 响应式设计 */
 @media (max-width: 768px) {
   body { padding: 12px; }
   header { padding: 12px 16px; flex-direction: column; }
@@ -47,14 +39,14 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:#58a6ff!import
 <body>
 <header>
   <div class="logo">🛠 <span>Dev</span>Kit<span class="badge">BETA</span></div>
-  <div style="font-size:11px;color:#8b949e">🔒 Processed locally · 数据不Upload</div>
+  <div style="font-size:11px;color:#8b949e">🔒 Processed locally · No data uploaded</div>
 </header>
 <main>
   <h1 style="font-size:24px;margin-bottom:4px">QR Code Generator</h1>
-  <p style="color:#8b949e;font-size:14px;margin-bottom:8px">免费在线二维码Generate器 - Input文字/链接即时Generate二维码，可DownloadPNG</p>
+  <p style="color:#8b949e;font-size:14px;margin-bottom:8px">Free online QR Code Generator — Generate QR codes from text/URLs instantly, download as PNG</p>
 <div class="tool-wrapper">
   <div class="input-group">
-    <textarea id="qr-input" placeholder="Input文字或链接..." rows="3" style="width:100%;padding:16px;font-size:14px;border:1px solid #30363d;border-radius:8px;background:#0d1117;color:#c9d1d9;resize:vertical;outline:none;font-family:inherit"></textarea>
+    <textarea id="qr-input" placeholder="Enter text or URL..." rows="3" style="width:100%;padding:16px;font-size:14px;border:1px solid #30363d;border-radius:8px;background:#0d1117;color:#c9d1d9;resize:vertical;outline:none;font-family:inherit"></textarea>
   </div>
   <div class="actions" style="display:flex;gap:8px;margin:16px 0">
     <select id="qr-size" style="padding:8px 12px;border:1px solid #30363d;border-radius:6px;background:#21262d;color:#c9d1d9;font-size:13px">
@@ -62,13 +54,13 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:#58a6ff!import
       <option value="512" selected>512px</option>
       <option value="1024">1024px</option>
     </select>
-    <input type="color" id="qr-fg" value="#000000" style="width:40px;height:38px;border:1px solid #30363d;border-radius:6px;cursor:pointer;background:transparent;padding:2px" title="前景色">
-    <input type="color" id="qr-bg" value="#ffffff" style="width:40px;height:38px;border:1px solid #30363d;border-radius:6px;cursor:pointer;background:transparent;padding:2px" title="背景色">
-    <button class="btn btn-primary" style="flex:1;padding:8px 16px;background:#238636;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600" onclick="generateQR()">Generate二维码</button>
+    <input type="color" id="qr-fg" value="#000000" style="width:40px;height:38px;border:1px solid #30363d;border-radius:6px;cursor:pointer;background:transparent;padding:2px" title="Foreground color">
+    <input type="color" id="qr-bg" value="#ffffff" style="width:40px;height:38px;border:1px solid #30363d;border-radius:6px;cursor:pointer;background:transparent;padding:2px" title="Background color">
+    <button class="btn btn-primary" style="flex:1;padding:8px 16px;background:#238636;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600" onclick="generateQR()">Generate QR Code</button>
     <button class="btn" style="padding:8px 16px;background:#21262d;color:#c9d1d9;border:1px solid #30363d;border-radius:6px;cursor:pointer;font-size:13px" onclick="downloadQR()">Download PNG</button>
   </div>
   <div id="qr-result" style="text-align:center;padding:32px;min-height:200px;display:flex;align-items:center;justify-content:center">
-    <div style="color:#484f58">Input文字后Click「Generate二维码」</div>
+    <div style="color:#484f58">Enter text and click "Generate QR Code"</div>
   </div>
 </div>
 </main>
@@ -84,7 +76,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:#58a6ff!import
 const QRAPI = 'https://api.qrserver.com/v1/create-qr-code/';
 function generateQR() {
   const text = document.getElementById('qr-input').value.trim();
-  if (!text) return alert('请Input文字或链接');
+  if (!text) return alert('Please enter text or a URL');
   const size = document.getElementById('qr-size').value;
   const fg = document.getElementById('qr-fg').value.substring(1);
   const bg = document.getElementById('qr-bg').value.substring(1);
@@ -93,7 +85,7 @@ function generateQR() {
 }
 function downloadQR() {
   const img = document.getElementById('qr-img');
-  if (!img) return alert('请先Generate二维码');
+  if (!img) return alert('Please generate a QR code first');
   const a = document.createElement('a');
   a.href = img.src;
   a.download = 'qr-code.png';
